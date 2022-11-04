@@ -1,15 +1,15 @@
 import * as React from "react";
-import { NativeRouter, Route, Routes } from "react-router-native";
+import { NativeRouter } from "react-router-native";
 
-import Home from "./src/home.jsx";
+import Home from "./src/home";
+
 
 export default function App() {
-  return (
+  return (<>
     <NativeRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+        <Home />
     </NativeRouter>
+    </>
   );
 }
 
