@@ -7,7 +7,7 @@ import Home from "./src/home";
 export default function App() {
   return (<>
     <NativeRouter>
-        <Home />
+      <Home />
     </NativeRouter>
     </>
   );
