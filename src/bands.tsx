@@ -13,7 +13,7 @@ const Bands = ()=>{
     }
   };
 
-  const getMovies = () => {
+  const getLyrics = () => {
     fetch('https://lyrics-finder1.p.rapidapi.com/artists/Avenged-Sevenfold', options)
     .then(response => response.json())
     .then(data => setData(data))
@@ -21,7 +21,7 @@ const Bands = ()=>{
   }
 
   useEffect(() => {
-    getMovies();
+    getLyrics();
   }, []);
   console.log(data)
   
