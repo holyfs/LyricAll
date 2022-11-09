@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, Text, View } from 'react-native';
+import { StatusBar, Text, View, Button } from 'react-native';
 
 
 const Bands = ()=>{
@@ -24,9 +24,13 @@ const Bands = ()=>{
     getLyrics();
   }, []);
   console.log(data)
+
+  const showSong=(song)=>{
+    console.log("Entre", song);
+  }
   
   let ListOfSongs = data ? data.map((song, index)=>{
-    return <View key={index}><Text>{song.songName}</Text></View>}):<View><Text>...Loading</Text></View>
+    return <View key={index}><Button onPress={()=>showSong(index)} title={song.songName}></Button></View>}):<View><Text>...Loading</Text></View>
 
   return (<>
     <StatusBar hidden={false} /> 
