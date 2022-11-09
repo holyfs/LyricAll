@@ -25,7 +25,7 @@ const Bands = ()=>{
   }, []);
   console.log(data)
 
-  const showSong=(song)=>{
+  const showSong=(song:number)=>{
     console.log("Entre", song);
   }
   
