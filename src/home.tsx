@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-native";
-import Bands from "./bands";
+import Songs from "./songs";
 import { StyleSheet } from "react-native";
 
 
 const Home = ()=>{
     return(
       <Routes>
-        <Route path="/" element={<Bands />} />
+        <Route path="/" element={<Songs />} />
       </Routes>
     )
 };
