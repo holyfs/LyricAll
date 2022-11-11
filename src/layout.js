@@ -1,8 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-native";
 import { View } from "react-native"
-import  Home  from "./components/home.tsx";
 import injectContext from "./store/appContext";
+
+import  Home  from "./views/home.tsx";
+import AppBar from "./components/appBar";
 
 //create your first component
 const Layout = () => {
@@ -13,6 +15,7 @@ const Layout = () => {
 
 	return (
         <View>
+            <AppBar />
             <Routes>
                 <Route exact path="/" element={<Home />}>
                 </Route>
