@@ -5,7 +5,7 @@ import Song from "./song";
 
 const Songs = ()=>{
   const [data, setData]= useState<any[]>([]);
-  const [lyric, setLyric]= useState("");
+/*   const [lyric, setLyric]= useState(null); */
   
   const options = {  
     method: 'GET',
@@ -25,24 +25,21 @@ const Songs = ()=>{
   useEffect(() => {
     getSongs();
   }, []);
-  console.log(data)
 
   /**
    * Function to return song url
   */
-   const getLyric = async (html:any) => {
-    await fetch(`https://lyrics-finder1.p.rapidapi.com/artists/avenged-sevenfold/${html}`, options)
-    if(lyric){
-      setLyric(lyric)
-    }else{
-      console.log(error)
-    }
-    
-  }
- let songUri:string=""
-  const showSong=(song:any)=>{
-    songUri=song.uri
-    return getLyric(songUri);
+/*    const getLyric = (lyric:string) => {
+    fetch(`https://lyrics-finder1.p.rapidapi.com/artists/${lyric}`, options)
+    .then(response=>response.json());
+    .then(songLyric => setLyric(songLyric));
+    .catch(err => console.error(err))
+  } */
+  const showSong=(song:any)=>{  
+    let lyric=song.uri
+    let lyricWithOutHtml= lyric.replace(".html"," ");
+    console.log(lyricWithOutHtml)
+/*     getLyric(lyricWithOutHtml) */
   }
   
   let ListOfSongs = data ? data.map((song, index)=>{
@@ -52,7 +49,7 @@ const Songs = ()=>{
     <StatusBar hidden={false} /> 
     <View style={{ padding: 24 }}>
     {ListOfSongs}
-    <Song song={lyric}/>
+    <Song song="eh"/>
     </View>
     </>
   );
