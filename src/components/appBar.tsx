@@ -1,13 +1,13 @@
 import React from "react";
-import { Button, StatusBar, StyleSheet, Text } from "react-native";
+import { StatusBar, StyleSheet, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Box, HStack, Input, NativeBaseProvider, Icon  } from "native-base";
+import Constants  from "expo-constants";
+import { Box, HStack, Input, Icon  } from "native-base";
 
 function AppBar() {
     return <>
-      <NativeBaseProvider>
-        <Box style={styles.container} safeAreaTop={true}>
-          <StatusBar barStyle="default" hidden={false} />
+        <StatusBar barStyle="default" hidden={false} />
+          <Box style={styles.container}>
           <HStack justifyContent="space-between">
             <Text style={styles.textStyle}>
               Home
@@ -21,14 +21,14 @@ function AppBar() {
                   as={<Ionicons name="ios-search" />} />} />
           </HStack>
         </Box>
-      </NativeBaseProvider>
       </>;
   };
   const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
-      backgroundColor: '#ECF0F1'
+      backgroundColor: '#ECF0F1',
+      marginTop: Constants.statusBarHeight
     },
     buttonsContainer: {
       padding: 10
