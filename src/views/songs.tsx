@@ -1,31 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { StatusBar, Text, View, Button } from 'react-native';
+import { Context } from "../store/appContext"
 import Song from "./song";
 
 
 const Songs = ()=>{
-  const [data, setData]= useState<any[]>([]);
+  const { store }= useContext(Context) as any;
 /*   const [lyric, setLyric]= useState(null); */
   
-  const options = {  
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': 'b91f3eccdbmshc4638551fffa5fdp1ba5c6jsnf5654dcdc4d5',
-      'X-RapidAPI-Host': 'lyrics-finder1.p.rapidapi.com'
-    }
-  };
-
-  const getSongs = () => {
-    fetch('https://lyrics-finder1.p.rapidapi.com/artists/avenged-sevenfold', options)
-    .then(response => response.json())
-    .then(data => setData(data))
-    .catch(err => console.error(err));
-  }
-
-  useEffect(() => {
-    getSongs();
-  }, []);
-
   /**
    * Function to return song url
   */
@@ -42,7 +24,7 @@ const Songs = ()=>{
 /*     getLyric(lyricWithOutHtml) */
   }
   
-  let ListOfSongs = data ? data.map((song, index)=>{
+  let ListOfSongs = store.songs ? store.songs.map((song:any, index:number)=>{
     return <View key={index}><Button onPress={()=>showSong(song)} title={song.songName}></Button></View>}):<View><Text>...Loading</Text></View>
 
   return (<>

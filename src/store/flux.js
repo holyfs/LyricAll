@@ -1,9 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			personajes:[],
-			vehicles:[],
-			planets:[],
+			songs:[],
 			favorites: [],
 			demo: [
 				{
@@ -21,49 +19,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
-			GetPeople : () => {
-				 fetch("https://www.swapi.tech/api/people", {
-				  method: "GET",
-				  headers: {
-					"Content-Type": "application/json",
-				  },
+			GetSongs : () => {
+				 fetch('https://lyrics-finder1.p.rapidapi.com/artists/avenged-sevenfold', {
+					method: 'GET',
+					headers: {
+					  'X-RapidAPI-Key': 'b91f3eccdbmshc4638551fffa5fdp1ba5c6jsnf5654dcdc4d5',
+					  'X-RapidAPI-Host': 'lyrics-finder1.p.rapidapi.com'
+					}
 				}).then((res) => {
 					return res.json();
 				  })
 				  .then((data) => {
-					setStore({personajes:data.results})
+					console.log(data)
+					setStore({songs:data})
 				  }).catch((err) => console.error(err))
 			  },
-			  GetPlanets : () => {
-				 fetch("https://www.swapi.tech/api/planets", {
-				  method: "GET",
-				  headers: {
-					"Content-Type": "application/json",
-				  },
-				})
-				  .then((res) => {
-					return res.json();
-				  })
-				  .then((data) => {
-					setStore ({planets: data.results})
-				   
-				})
-				  .catch((err) => console.error(err))
-			  },
-			  GetVehicles :() => {
-				fetch("https://www.swapi.tech/api/vehicles", {
-				  method: "GET",
-				  headers: {
-					"Content-Type": "application/json",
-				  },
-				})
-				  .then((res) => {
-					return res.json();
-				  }).then((data) => {
-					setStore ({vehicles: data.results})
-				  })
-				  .catch((err) => console.error(err))
-			  },
+
 			  listarFavorites: () => {
 				const store = getStore();
 				return store.favorites;
